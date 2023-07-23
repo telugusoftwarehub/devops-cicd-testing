@@ -31,7 +31,7 @@ pipeline {
             /usr/bin/sw_vers
 
             # Build the Docker image
-            /Users/kiran/.docker/bin/docker build --pull --no-cache -tag demo-app .
+            /Users/kiran/.docker/bin/docker build -t demo-app .
             
             /Users/kiran/.docker/bin/docker run -d -p 8909:80 demo-app
 
