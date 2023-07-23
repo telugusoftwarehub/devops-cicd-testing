@@ -19,7 +19,7 @@ pipeline {
             # single sh means single shell, if you use multiple sh 'command 1' sh 'command2' it will run in different shells
 
             # Change directory to the Docker project
-            cd /Users/kiran/devops/docker-example
+            cd /Users/kiran/devops/docker-example/devops-cicd-testing
 
             # Print the current working directory
             pwd
