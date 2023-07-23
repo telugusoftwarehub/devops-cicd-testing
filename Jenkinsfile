@@ -15,7 +15,32 @@ pipeline {
       steps {
         // Build the Docker image
         script {
-          docker.build("my-app:${env.BUILD_NUMBER}")
+          sh '''
+            # single sh means single shell, if you use multiple sh 'command 1' sh 'command2' it will run in different shells
+
+            # Change directory to the Docker project
+            cd /Users/kiran/devops/docker-example
+
+            # Print the current working directory
+            pwd
+            
+            #testing
+            /Users/kiran/.docker/bin/docker version
+            
+            #test
+            /usr/bin/sw_vers
+
+            # Build the Docker image
+            /Users/kiran/.docker/bin/docker build -t demo-app .
+            
+            /Users/kiran/.docker/bin/docker run -d -p 8999:80 demo-app
+
+        '''
+        def exitStatus = sh(script: 'pwd', returnStatus: true) // testing pwd command, if its working or not
+
+        if (exitStatus != 0) {
+            error('Shell command failed')
+        }
         }
       }
     }
@@ -24,9 +49,10 @@ pipeline {
       steps {
         // Push the Docker image to a Docker registry
         script {
-          docker.withRegistry('https://your-docker-registry', 'your-docker-credentials') {
-            docker.image("my-app:${env.BUILD_NUMBER}").push()
-          }
+          sh '''
+            # Build the Docker image
+              /Users/kiran/.docker/bin/docker push demo-app
+          '''
         }
       }
     }
@@ -35,9 +61,10 @@ pipeline {
       steps {
         // Deploy the application to the local Docker machine
         script {
-          docker.withServer('your-docker-machine-url') {
-            docker.image("my-app:${env.BUILD_NUMBER}").run("-p 8080:80")
-          }
+          sh '''
+            # Build the Docker image
+              /Users/kiran/.docker/bin/docker run demo-app
+          '''
         }
       }
     }
