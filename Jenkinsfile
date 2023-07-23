@@ -13,11 +13,11 @@ pipeline {
                 withCredentials([
                     usernamePassword(credentialsId: 'AWS_secrets_for_s3_upload', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')
                 ]) {
-                    script {
-                        sh'''
-                            /usr/local/bin/aws s3 cp /Users/kiran/devops/docker-example/ s3://sample-dev-deploy-bucket/ --recursive
-                        '''
-                    }
+                    // script {
+                    //     sh'''
+                    //         /usr/local/bin/aws s3 cp /Users/kiran/devops/docker-example/ s3://sample-dev-deploy-bucket/ --recursive
+                    //     '''
+                    // }
                 }
             }
         }
