@@ -8,15 +8,19 @@
     <style>
 		body {
 			background-color: #2D2D2D;
-            height: 95vh;
+            /* height: 95vh; */
+            display: flex;
+            flex-direction: column;
+            /* border: 1px solid #000; */
+            align-items: center;
+            justify-content: center;
+
 		}
 
         #container {
-            display: flex;
-            flex-direction: column;
-            border: 1px solid #000;
-            align-items: center;
-            justify-content: center;
+            
+            width: 1000px;
+
         }
 		
 		h1 {
@@ -29,6 +33,13 @@
 			color: white;
 			font-family: "Source Code Pro", Menlo, Monaco, fixed-width;
 		}
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+        }
 	</style>
 </head>
 <body>
@@ -39,6 +50,9 @@
             In this example, I have connected local jenkins with github to initiate a CI/CD pipeline automatically.
             I used all the local tools only, it will help you to do practice and gain confidence.
         </p>
+        <br>
+        <br>
+        <img src="./cicd-pipe.png" width="800" alt="">
     </div>
     <script src="./script.js"></script>
 </body>
