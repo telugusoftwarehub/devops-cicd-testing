@@ -7,6 +7,7 @@ pipeline {
         // Checkout the source code from your repository
         // Use the appropriate SCM plugin and configuration for your repository
         // Example: git 'https://github.com/your-repo.git'
+        echo 'Git branch Checkout!!!'
       }
     }
 
